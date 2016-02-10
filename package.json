@@ -1,0 +1,19 @@
+{
+  "name": "gmailkanban",
+  "version": "0.0.1",
+  "description": "A Simple Kanban browser extention for Gmail users.",
+  "main": "",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyojin/GmailKanban.git"
+  },
+  "author": "Hyojin Kwak",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/hyojin/GmailKanban/issues"
+  },
+  "homepage": "https://github.com/hyojin/GmailKanban#readme"
+}
