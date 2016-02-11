@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "Gmail Kanban",
+    "description": "A Simple Kanban extension for Gmail users.",
+    "version": "0.0.1",
+    "author": "Hyojin Kwak",
+    "homepage_url": "https://github.com/hyojin/GmailKanban#readme",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "permissions": [
+        "tabs",
+        "storage",
+        "https://mail.google.com/*"
+    ],
+    "optional_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "scripts": [ "background.js" ]
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://mail.google.com/*"],
+            "js": ["content.js"]
+        }
+    ]
+}
