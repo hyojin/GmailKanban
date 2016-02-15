@@ -48,9 +48,10 @@ GmailHelper.prototype.getWrapperElement = function() {
 };
 
 GmailHelper.prototype.addGmailToKanban = function() {
+    var self = this;
     cMessageController.send({
         cmd: 'addTicketFromGmail',
-        title: 'testtest'
+        title: document.getElementsByClassName("hP")[0].innerText
     });
 };
 
