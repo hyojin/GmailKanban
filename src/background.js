@@ -1,10 +1,12 @@
-var BgInfo = BgInfo || {};
-BgInfo.currentTabUrl = '';
+var AppInfo = AppInfo || {
+    gmailTab: {},
+    kanbanTab: {}
+};
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     if (changeInfo.status === 'complete' &&
     tab.url.search('https://mail.google.com/mail/') === 0) {
-        BgInfo.currentTabUrl = tab.url;
+        AppInfo.gmailTab = tab;
         bgMessageController.send({cmd: 'initilize'});
     }
 });
@@ -14,12 +16,12 @@ var BgMessageController = function() {};
 BgMessageController.prototype.listen = function(request, sender, sendResponse) {
     if(request.cmd === 'addTicketFromGmail') {
         console.log(request);
-        console.log(BgInfo.currentTabUrl);
+        console.log(AppInfo.gmailTab.url);
     }
 };
 
 BgMessageController.prototype.send = function(message, cb) {
-    chrome.tabs.query({active: true}, function(tabs){
+    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
         chrome.tabs.sendMessage(tabs[0].id, message, function(response) {
             if(cb instanceof Function) {
                 cb(response);
