@@ -12,7 +12,7 @@
     },
     "permissions": [
         "tabs",
-        "storage",
+        "unlimitedStorage",
         "https://mail.google.com/*"
     ],
     "optional_permissions": [
