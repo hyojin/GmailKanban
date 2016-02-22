@@ -47,7 +47,7 @@ BgMessageController.prototype.listen = function(request, sender, sendResponse) {
     if(request.cmd === 'addTicketFromGmail') {
         consoleLog('cmd: addTicketFromGmail');
         consoleLog(sender.url);
-        localStorage.setItem('addTicketFromGmail', 'value');
+        localStorage.setItem('addedTicketFromGmail', 'value');
         if (AppInfo.kanbanStatus === false) {
             chrome.tabs.create({url: 'kanban.html'}, function(tab) {
                 consoleLog(tab);
