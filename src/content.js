@@ -32,6 +32,7 @@ GmailHelper.prototype.getButtonElement = function() {
     contentWrap.classList.add('asa');
     
     var buttonContent = document.createElement('div');
+    // TODO
     buttonContent.innerText = 'Add to Kanban';
     
     contentWrap.appendChild(buttonContent);
