@@ -1,0 +1,23 @@
+{
+  "name": "gmailkanban",
+  "description": "A Simple Kanban browser extention for Gmail users.",
+  "main": "",
+  "authors": [
+    "Hyojin Kwak"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/hyojin/GmailKanban",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.1",
+    "mui": "~0.4.6"
+  }
+}
