@@ -1,23 +1,33 @@
 {
-  "name": "gmailkanban",
-  "version": "0.0.1",
-  "description": "A Simple Kanban browser extention for Gmail users.",
-  "main": "",
-  "scripts": {
-    "test": ""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hyojin/GmailKanban.git"
-  },
-  "author": "Hyojin Kwak",
-  "license": "",
-  "bugs": {
-    "url": "https://github.com/hyojin/GmailKanban/issues"
-  },
-  "homepage": "https://github.com/hyojin/GmailKanban#readme",
-  "devDependencies": {
-    "crx": "^3.0.3",
-    "gulp": "^3.9.1"
-  }
+    "name": "gmailkanban",
+    "version": "0.0.1",
+    "description": "A Simple Kanban browser extention for Gmail users.",
+    "main": "",
+    "scripts": {
+        "start": "watchify -o src/kanban/bundle.js -v -d src/kanban/app.js",
+        "build": "",
+        "test": ""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hyojin/GmailKanban.git"
+    },
+    "author": "Hyojin Kwak",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/hyojin/GmailKanban/issues"
+    },
+    "homepage": "https://github.com/hyojin/GmailKanban#readme",
+    "devDependencies": {
+        "browserify": "^13.0.0",
+        "crx": "^3.0.3",
+        "debowerify": "^1.3.1",
+        "gulp": "^3.9.1",
+        "watchify": "^3.7.0"
+    },
+    "browserify": {
+        "transform": [
+            "debowerify"
+        ]
+    }
 }
