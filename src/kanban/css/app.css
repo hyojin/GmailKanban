@@ -1,0 +1,23 @@
+body {
+	background-color: #ECEFF1;
+	overflow: hidden;
+    font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Tahoma;
+}
+
+.appbar {
+    background-color: #607D8B;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+.appbar-title {
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+.appbar-link {
+	margin-right: 20px;
+}
+
+.appbar-link i {
+	color: #FFF;
+}

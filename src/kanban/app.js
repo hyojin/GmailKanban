@@ -1,2 +1,4 @@
-var $ = require('jquery');
+var $ = jQuery = require('jquery');
+require('jquery-ui');
+
 console.log($);
