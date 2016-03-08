@@ -20,8 +20,8 @@ var AppInfo = AppInfo || {
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     if (changeInfo.status === 'complete' &&
     tab.url.search('https://mail.google.com/mail/') === 0) {
-        consoleLog('Initilize Gmail Kanban');
-        bgMessageController.send({cmd: 'initilize'});
+        consoleLog('initialize Gmail Kanban');
+        bgMessageController.send({cmd: 'initialize'});
     }
 });
 
@@ -44,10 +44,10 @@ var BgMessageController = function() {};
 BgMessageController.prototype.listen = function(request, sender, sendResponse) {
     consoleLog(request);
     consoleLog(sender);
-    if(request.cmd === 'addTicketFromGmail') {
-        consoleLog('cmd: addTicketFromGmail');
+    if(request.cmd === 'addCardFromGmail') {
+        consoleLog('cmd: addCardFromGmail');
         consoleLog(sender.url);
-        localStorage.setItem('addedTicketFromGmail', 'value');
+        localStorage.setItem('addedCardFromGmail', 'value');
         if (AppInfo.kanbanStatus === false) {
             chrome.tabs.create({url: 'kanban.html'}, function(tab) {
                 consoleLog(tab);

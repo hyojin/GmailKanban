@@ -51,7 +51,7 @@ GmailHelper.prototype.getWrapperElement = function() {
 GmailHelper.prototype.addGmailToKanban = function() {
     var self = this;
     cMessageController.send({
-        cmd: 'addTicketFromGmail',
+        cmd: 'addCardFromGmail',
         title: document.getElementsByClassName("hP")[0].innerText
     });
 };
@@ -61,7 +61,7 @@ var gmailHelper = new GmailHelper();
 var CMessageController = function() {};
 
 CMessageController.prototype.listen = function(request, sender, sendResponse) {
-    if(request.cmd === 'initilize') {
+    if(request.cmd === 'initialize') {
         if (gmailHelper.isGmailOpen()) {
             gmailHelper.addKanbanButton();
         }
