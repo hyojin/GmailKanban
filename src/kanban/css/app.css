@@ -1,23 +1,144 @@
 body {
 	background-color: #ECEFF1;
 	overflow: hidden;
-    font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Tahoma;
+	font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Tahoma;
 }
 
 .appbar {
-    background-color: #607D8B;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+	background-color: #607D8B;
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
 .appbar-title {
-    font-size: 24px;
-    margin-left: 20px;
+	font-size: 24px;
+	margin-left: 20px;
 }
 
 .appbar-link {
 	margin-right: 20px;
 }
 
+.appbar-link-title {
+	vertical-align: super;
+}
+
 .appbar-link i {
 	color: #FFF;
+}
+
+#board {
+	position: absolute;
+	height: 100%;
+}
+
+.card-list-wrapper {
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 10px;
+	margin-right: 15px;
+	
+}
+
+.card-list {
+	width: 340px;
+	max-height: 500px;
+	margin: 0px;
+	padding-bottom: 14px;
+	padding-top: 0px;
+	display: flex;
+	flex-direction: column;
+}
+
+.card-list .card-list-header {
+	flex: 0 0 auto;
+}
+
+.card-list .card-list-header .card-list-title-area {
+	margin-top: 10px;
+	width: 205px;
+	float: left;
+}
+
+.card-list .card-list-header .card-list-title-area .card-list-title {
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.card-list .card-list-header .card-list-button-area {
+	width: 105px;
+	float: left;
+}
+
+.card-list .mui-divider {
+	margin-bottom: 1px;
+	clear: both;
+	flex: 0 0 auto;
+}
+
+.card-list-body {
+	overflow-y: auto;
+	flex: 1 1 auto;
+}
+
+.card-list-body::-webkit-scrollbar { width: 0 !important }
+/*.card-list-body { -ms-overflow-style: none; }
+.card-list-body { overflow: -moz-scrollbars-none; }*/
+
+.kanban-card {
+	background-color: #FFE082;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.kanban-card.active {
+	background-color: #FFECB3;
+}
+
+.kanban-card .kanban-card-gmail {
+	padding-top: 5px;
+}
+
+.kanban-card .card-area {
+	width: 270px;
+	float: left;
+}
+
+.noselect {
+	/*-webkit-touch-callout: none;*/
+	-webkit-user-select: none;
+	/*-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;*/
+	user-select: none;
+}
+
+.kanban-card .button-area {
+	width: 12px;
+	float: left;
+}
+
+.kanban-card .button-area i {
+	color: #424242;
+}
+
+.card-dropdown-btn {
+	background: transparent;
+	width: 20px;
+	height: 20px;
+	padding: 0px;
+}
+
+.card-dropdown-btn .mui-caret {
+	padding-bottom: 16px;
+}
+
+.button-area .mui-dropdown__menu {
+	min-width: 52px;
+}
+
+.card-dropdown-btn .mui-btn:active, .mui-btn:focus, .mui-btn:hover {
+	background: transparent;
 }
