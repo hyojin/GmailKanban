@@ -106,6 +106,10 @@ body {
 	float: left;
 }
 
+.kanban-card .card-area .kanban-card-label {
+	min-height: 40px;
+}
+
 .noselect {
 	/*-webkit-touch-callout: none;*/
 	-webkit-user-select: none;
@@ -129,6 +133,7 @@ body {
 	width: 20px;
 	height: 20px;
 	padding: 0px;
+	margin-top: 0px;
 }
 
 .card-dropdown-btn .mui-caret {
