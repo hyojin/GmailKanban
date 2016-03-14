@@ -1,4 +1,5 @@
 var $ = jQuery = require('jquery');
+var CardAction = require('./action.CardAction');
 
 var Card = function(card) {
     card.label == null ? this.label = '' : this.label = card.label;
@@ -13,9 +14,13 @@ Card.prototype.render = function($parentDom) {
 };
 
 Card.prototype.editLabel = function(text) {
-    this.$label.attr('contentEditable', true);
-    this.$label.trigger('focus');
-    console.log('modifyName Called');
+    var self = this;
+    self.$label.attr('contentEditable', true);
+    self.$label.trigger('focus');
+    self.$label.blur(function() {
+        self.$label.attr('contentEditable', false);
+        CardAction.action('editLabel', self);
+    });
 };
 
 Card.prototype.remove = function() {
@@ -43,6 +48,15 @@ Card.prototype.html = function() {
             '</div>' +
         '</div>' +
     '</div>';
+};
+
+Card.prototype.toJson = function() {
+    var card = {
+        label: this.label,
+        gmailTitle: this.gmailTitle,
+        gmailLink: this.gmailLink
+    };
+    return card;
 };
 
 module.exports = Card;

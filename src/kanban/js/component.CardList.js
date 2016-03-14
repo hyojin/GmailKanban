@@ -1,8 +1,18 @@
 var $ = jQuery = require('jquery');
+var Card = require('./component.Card');
+var CardAction = require('./action.CardAction');
 
 var CardList = function(title, cards) {
     this.title = title;
-    cards == null? this.cards = [] : this.cards = cards;
+    cards == null? cards = [] : cards = cards;
+    this.init(cards);
+};
+
+CardList.prototype.init = function(cards) {
+    this.cards = [];
+    for (i = 0; i < cards.length; i++) {
+        this.cards.push(new Card(cards[i]));
+    }
 };
 
 CardList.prototype.render = function($parentDom) {
@@ -34,9 +44,18 @@ CardList.prototype.html = function() {
 };
 
 CardList.prototype.addCard = function(card) {
-    card.render(this.$cardListBody);
-    this.cards.push(card);
-    card.editLabel();
+    CardAction.action('addCard', card, this);
+};
+
+CardList.prototype.toJson = function() {
+    var cardList = {
+        title: this.title,
+        cards: []
+    };
+    for (var i = 0; i < this.cards.length; i++) {
+        cardList.cards.push(this.cards[i].toJson());
+    }
+    return cardList;
 };
 
 module.exports = CardList;

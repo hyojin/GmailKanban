@@ -1,10 +1,16 @@
+var CardList = require('./component.CardList');
+
 var Board = function (cardLists, $dom) {
-    cardLists == null? this.cardLists = [] : this.cardLists = cardLists;
+    cardLists == null? cardLists = [{title: 'TODO', cards:[]}] : cardLists = cardLists;
     this.$dom = $dom;
-    this.init();
+    this.init(cardLists);
 };
 
-Board.prototype.init = function() {
+Board.prototype.init = function(cardLists) {
+    this.cardLists = [];
+    for (i = 0; i < cardLists.length; i++) {
+        this.cardLists.push(new CardList(cardLists[i].title, cardLists[i].cards));
+    }
     this.render();
 };
 
@@ -19,8 +25,18 @@ Board.prototype.addCardFromGmail = function(card) {
     this.cardLists[0].addCard(card);
 };
 
+Board.prototype.save = function() {
+     GmailKanban.store.saveBoard(this.toJson());
+};
+
 Board.prototype.toJson = function() {
-    
+    var board = {
+        cardLists: []
+    };
+    for (i = 0; i < this.cardLists.length; i++) {
+        board.cardLists.push(this.cardLists[i].toJson());
+    }
+    return board;
 };
 
 module.exports = Board;
