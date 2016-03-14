@@ -12,6 +12,7 @@ body {
 .appbar-title {
 	font-size: 24px;
 	margin-left: 20px;
+	cursor: default;
 }
 
 .appbar-link {
@@ -20,6 +21,7 @@ body {
 
 .appbar-link-title {
 	vertical-align: super;
+	cursor: default;
 }
 
 .appbar-link i {
