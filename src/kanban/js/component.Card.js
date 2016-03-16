@@ -30,6 +30,9 @@ Card.prototype.bindEvent = function($html) {
     $html.find('.card-remove').click(function() {
         self.remove();
     });
+    $html.find('.gmailLink').click(function() {
+        self.openGmailInNewTab(self.gmailLink);
+    });
     self.$label.blur(function() {
         self.$label.attr('contentEditable', false);
         CardAction.action('editLabel', self);
@@ -39,6 +42,11 @@ Card.prototype.bindEvent = function($html) {
             self.$label.trigger('blur');
             return false;
         }
+    });
+};
+
+Card.prototype.openGmailInNewTab = function(gmailLink) {
+    chrome.tabs.create({url: gmailLink}, function(tab) {
     });
 };
 
@@ -53,7 +61,7 @@ Card.prototype.html = function() {
             '<div class="kanban-card-label noselect">' + this.label +'</div>' +
             '<div class="kanban-card-gmail">' +
                 '<i class="fa fa-envelope"></i>' +
-                '<a href="' + this.gmailLink + '"">' + this.gmailTitle +'</a>' +
+                '<a href="#" class="gmailLink">' + this.gmailTitle +'</a>' +
             '</div>' +
         '</div>' +
         '<div class="button-area">' +

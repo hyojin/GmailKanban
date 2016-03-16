@@ -26,7 +26,6 @@ CardList.prototype.render = function($parentDom) {
     this.bindEvent($html);
     for (var i = 0; i < this.cards.length; i++) {
         this.cards[i].render(this.$cardListBody);
-        console.log($html);
     }
     $parentDom.append($html);
 };
