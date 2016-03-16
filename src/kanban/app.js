@@ -43,6 +43,5 @@ var KanbanInit = function() {
 var KanbanFocused = function() {
     var addedCard = GmailKanban.store.getRecentlyAdded();
     if (!addedCard) return;
-    var card = new Card(addedCard);
-    GmailKanban.currentBoard.addCardFromGmail(card);
+    GmailKanban.currentBoard.addCardFromGmail(addedCard);
 };

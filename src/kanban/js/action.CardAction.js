@@ -9,9 +9,12 @@ var CardAction = {
             
             case 'editLabel':
             card.label = card.$label.text();
-            console.log(card);
             break;
             
+            case 'removeCard':
+            card.$dom.remove();
+            cardList.removeCardFromCards(card);
+
             default:
         }
         GmailKanban.currentBoard.save();

@@ -20,9 +20,9 @@ Board.prototype.render = function() {
     }
 };
 
-Board.prototype.addCardFromGmail = function(card) {
+Board.prototype.addCardFromGmail = function(cardInfo) {
     if (!this.cardLists.length > 0) console.log('this.cardLists.length > 0');
-    this.cardLists[0].addCard(card);
+    this.cardLists[0].addCard(cardInfo);
 };
 
 Board.prototype.save = function() {

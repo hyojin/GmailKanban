@@ -1,7 +1,8 @@
 var $ = jQuery = require('jquery');
 var CardAction = require('./action.CardAction');
 
-var Card = function(card) {
+var Card = function(parent, card) {
+    this.parent = parent;
     card.label == null ? this.label = '' : this.label = card.label;
     card.gmailTitle == null ? this.gmailTitle = '' : this.gmailTitle = card.gmailTitle;
     card.gmailLink == null ? this.gmailLink = '' : this.gmailLink = card.gmailLink;
@@ -9,6 +10,8 @@ var Card = function(card) {
 
 Card.prototype.render = function($parentDom) {
     var $html = $(this.html());
+    this.bindEvent($html);
+    this.$dom = $html;
     this.$label = $html.find('.kanban-card-label')
     $parentDom.append($html);
 };
@@ -23,8 +26,19 @@ Card.prototype.editLabel = function(text) {
     });
 };
 
+Card.prototype.bindEvent = function($html) {
+    var self = this;
+    $html.find('.card-edit').click(function() {
+        self.editLabel();
+    });
+    $html.find('.card-remove').click(function() {
+        self.remove();
+    });
+};
+
 Card.prototype.remove = function() {
     console.log('remove Called');
+    CardAction.action('removeCard', this, this.parent);
 };
 
 Card.prototype.html = function() {
@@ -42,8 +56,8 @@ Card.prototype.html = function() {
                     '<span class="mui-caret"></span>' +
                 '</button>' +
                 '<ul class="mui-dropdown__menu mui-dropdown__menu--right">' +
-                    '<li><a href="#"><i class="fa fa-pencil"></i></a></li>' +
-                    '<li><a href="#"><i class="fa fa-trash-o"></i></a></li>' +
+                    '<li><a class="card-edit" href="#"><i class="fa fa-pencil"></i></a></li>' +
+                    '<li><a class="card-remove" href="#"><i class="fa fa-trash-o"></i></a></li>' +
                 '</ul>' +
             '</div>' +
         '</div>' +

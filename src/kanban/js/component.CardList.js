@@ -11,7 +11,7 @@ var CardList = function(title, cards) {
 CardList.prototype.init = function(cards) {
     this.cards = [];
     for (i = 0; i < cards.length; i++) {
-        this.cards.push(new Card(cards[i]));
+        this.cards.push(new Card(this, cards[i]));
     }
 };
 
@@ -43,8 +43,18 @@ CardList.prototype.html = function() {
     '</div>';
 };
 
-CardList.prototype.addCard = function(card) {
+CardList.prototype.addCard = function(cardInfo) {
+    var card = new Card(this, cardInfo);
     CardAction.action('addCard', card, this);
+};
+
+CardList.prototype.removeCardFromCards = function(card) {
+    for (var i = 0; i < this.cards.length; i++) {
+        if (card === this.cards[i]) {
+            this.cards.splice(i, 1);
+            break;
+        }
+    }
 };
 
 CardList.prototype.toJson = function() {
