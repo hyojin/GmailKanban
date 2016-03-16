@@ -43,6 +43,12 @@ Card.prototype.bindEvent = function($html) {
             return false;
         }
     });
+    $html.on('cardMoved', function(event, index) {
+        console.log('cardMoved');
+        console.log(self);
+        console.log($html.parent());
+        $html.parent().trigger('cardDropped', [index, self]);
+    });
 };
 
 Card.prototype.openGmailInNewTab = function(gmailLink) {

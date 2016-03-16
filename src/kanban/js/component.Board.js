@@ -50,6 +50,12 @@ Board.prototype.cardSortable = function() {
         tolerance: 'pointer',
         start: function(e, ui) {
             ui.placeholder.css('height', ui.helper.height() + 20);
+        },
+        update: function(e, ui) {
+            console.log(e);
+            console.log(ui);
+            var index = ui.item.index();
+            $(ui.item).trigger('cardMoved', [index]);
         }
     });
 };

@@ -1,5 +1,5 @@
 var CardAction = {
-    action: function(actionType, card, cardList) {
+    action: function(actionType, card, cardList, index) {
         switch (actionType) {
             case 'addCard':
             card.render(cardList.$cardListBody);
@@ -14,6 +14,12 @@ var CardAction = {
             case 'removeCard':
             card.$dom.remove();
             cardList.removeCardFromCards(card);
+            break;
+
+            case 'moveCard':
+            card.parent.removeCardFromCards(card);
+            card.parent = cardList;
+            card.parent.cards.splice(index, 0, card);
             break;
 
             default:

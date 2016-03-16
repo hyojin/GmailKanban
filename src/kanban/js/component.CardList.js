@@ -48,6 +48,13 @@ CardList.prototype.bindEvent = function($html) {
             return false;
         }
     });
+    this.$cardListBody.on('cardDropped', function(event, index, card) {
+        console.log(index);
+        console.log(card);
+        console.log('cardDropped');
+        CardAction.action('moveCard', card, self, index);
+        return;
+    });
 };
 
 CardList.prototype.addCard = function(cardInfo) {
