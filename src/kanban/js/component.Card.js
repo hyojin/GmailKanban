@@ -10,9 +10,9 @@ var Card = function(parent, card) {
 
 Card.prototype.render = function($parentDom) {
     var $html = $(this.html());
+    this.$label = $html.find('.kanban-card-label');
     this.bindEvent($html);
     this.$dom = $html;
-    this.$label = $html.find('.kanban-card-label')
     $parentDom.append($html);
 };
 
@@ -20,10 +20,6 @@ Card.prototype.editLabel = function(text) {
     var self = this;
     self.$label.attr('contentEditable', true);
     self.$label.trigger('focus');
-    self.$label.blur(function() {
-        self.$label.attr('contentEditable', false);
-        CardAction.action('editLabel', self);
-    });
 };
 
 Card.prototype.bindEvent = function($html) {
@@ -33,6 +29,16 @@ Card.prototype.bindEvent = function($html) {
     });
     $html.find('.card-remove').click(function() {
         self.remove();
+    });
+    self.$label.blur(function() {
+        self.$label.attr('contentEditable', false);
+        CardAction.action('editLabel', self);
+    });
+    self.$label.keydown(function(e) {
+        if (e.keyCode === 13) {
+            self.$label.trigger('blur');
+            return false;
+        }
     });
 };
 

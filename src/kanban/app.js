@@ -43,6 +43,7 @@ var KanbanInit = function() {
     }
     GmailKanban.currentBoard = board;
     KanbanWindowResize();
+    KanbanCardSortable();
 };
 
 var KanbanFocused = function() {
@@ -53,4 +54,14 @@ var KanbanFocused = function() {
 
 var KanbanWindowResize = function() {
     $('.card-list').css('max-height', $(window).height() - 90);
+};
+
+var KanbanCardSortable = function() {
+    $('.sortable').sortable({
+        placeholder: 'sortable-placeholder kanban-card',
+        tolerance: 'pointer',
+        start: function(e, ui) {
+            console.log(ui.placeholder.css('height', ui.helper.height() + 20));
+        }
+    });
 };

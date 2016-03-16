@@ -1,4 +1,5 @@
 var CardList = require('./component.CardList');
+var AddCardListBtn = require('./component.AddCardListBtn');
 
 var Board = function (cardLists, $dom) {
     cardLists == null? cardLists = [{title: 'TODO', cards:[]}] : cardLists = cardLists;
@@ -8,16 +9,22 @@ var Board = function (cardLists, $dom) {
 
 Board.prototype.init = function(cardLists) {
     this.cardLists = [];
-    for (i = 0; i < cardLists.length; i++) {
+    for (var i = 0; i < cardLists.length; i++) {
         this.cardLists.push(new CardList(cardLists[i].title, cardLists[i].cards));
     }
+    this.addCardListBtn = new AddCardListBtn(this);
     this.render();
 };
 
 Board.prototype.render = function() {
-    for (i = 0; i < this.cardLists.length; i++) {
+    for (var i = 0; i < this.cardLists.length; i++) {
         this.cardLists[i].render(this.$dom);
     }
+    this.renderAddCardListBtn();
+};
+
+Board.prototype.renderAddCardListBtn = function() {
+    this.addCardListBtn.render();
 };
 
 Board.prototype.addCardFromGmail = function(cardInfo) {
@@ -33,7 +40,7 @@ Board.prototype.toJson = function() {
     var board = {
         cardLists: []
     };
-    for (i = 0; i < this.cardLists.length; i++) {
+    for (var i = 0; i < this.cardLists.length; i++) {
         board.cardLists.push(this.cardLists[i].toJson());
     }
     return board;

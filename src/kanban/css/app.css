@@ -60,11 +60,9 @@ body {
 	margin-top: 10px;
 	width: 205px;
 	float: left;
-}
-
-.card-list .card-list-header .card-list-title-area .card-list-title {
 	font-size: 18px;
 	cursor: pointer;
+	word-wrap: break-word;
 }
 
 .card-list .card-list-header .card-list-button-area {
@@ -110,7 +108,6 @@ body {
 
 .kanban-card .card-area .kanban-card-label {
 	min-height: 40px;
-	white-space: pre-wrap;
 	word-wrap: break-word;
 }
 
@@ -150,4 +147,13 @@ body {
 
 .card-dropdown-btn .mui-btn:active, .mui-btn:focus, .mui-btn:hover {
 	background: transparent;
+}
+
+.sortable-placeholder.kanban-card {
+	background-color: #EEEEEE;
+	border-radius: 5px;
+}
+
+.new-list-btn {
+	margin-top: 0px;
 }

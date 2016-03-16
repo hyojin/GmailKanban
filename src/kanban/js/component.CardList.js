@@ -1,6 +1,7 @@
 var $ = jQuery = require('jquery');
 var Card = require('./component.Card');
 var CardAction = require('./action.CardAction');
+var CardListAction = require('./action.CardListAction');
 
 var CardList = function(title, cards) {
     this.title = title;
@@ -10,15 +11,17 @@ var CardList = function(title, cards) {
 
 CardList.prototype.init = function(cards) {
     this.cards = [];
-    for (i = 0; i < cards.length; i++) {
+    for (var i = 0; i < cards.length; i++) {
         this.cards.push(new Card(this, cards[i]));
     }
 };
 
 CardList.prototype.render = function($parentDom) {
     var $html = $(this.html());
-    this.$cardListBody = $html.find('.card-list-body')
+    this.$title = $html.find('.card-list-title-area');
+    this.$cardListBody = $html.find('.card-list-body');
     console.log($html);
+    this.bindEvent($html);
     for (var i = 0; i < this.cards.length; i++) {
         this.cards[i].render(this.$cardListBody);
         console.log($html);
@@ -26,21 +29,18 @@ CardList.prototype.render = function($parentDom) {
     $parentDom.append($html);
 };
 
-CardList.prototype.html = function() {
-    return '<div class="card-list-wrapper">' +
-        '<div class="mui-panel card-list">' +
-            '<div class="card-list-header">' +
-                '<div class="card-list-title-area">' +
-                    '<span class="card-list-title noselect">' + this.title + '</span>' +
-                '</div>' +
-                '<div class="card-list-button-area">' +
-                    '<button class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat">Add Card</button>' +
-                '</div>' +
-            '</div>' +
-            '<div class="mui-divider"></div>' +
-            '<div class="card-list-body">' +
-        '</div>' +
-    '</div>';
+CardList.prototype.bindEvent = function($html) {
+    var self = this;
+    self.$title.blur(function() {
+        self.$title.attr('contentEditable', false);
+        CardListAction.action('editTitle', self);
+    });
+    self.$title.keydown(function(e) {
+        if (e.keyCode === 13) {
+            self.$title.trigger('blur');
+            return false;
+        }
+    });
 };
 
 CardList.prototype.addCard = function(cardInfo) {
@@ -55,6 +55,29 @@ CardList.prototype.removeCardFromCards = function(card) {
             break;
         }
     }
+};
+
+CardList.prototype.editTitle = function(text) {
+    var self = this;
+    self.$title.attr('contentEditable', true);
+    self.$title.trigger('focus');
+};
+
+CardList.prototype.html = function() {
+    return '<div class="card-list-wrapper">' +
+        '<div class="mui-panel card-list">' +
+            '<div class="card-list-header">' +
+                '<div class="card-list-title-area">' +
+                    this.title +
+                '</div>' +
+                '<div class="card-list-button-area">' +
+                    '<button class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat">Add Card</button>' +
+                '</div>' +
+            '</div>' +
+            '<div class="mui-divider"></div>' +
+            '<div class="card-list-body sortable">' +
+        '</div>' +
+    '</div>';
 };
 
 CardList.prototype.toJson = function() {
