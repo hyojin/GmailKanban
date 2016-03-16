@@ -9,7 +9,7 @@ var Store = require('./js/store.LocalStorage');
 console.log($);
 console.log(window);
 
-window.addEventListener('load', function() {
+$(window).load(function() {
     console.log('loaded');
     KanbanInit();
     var event = document.createEvent('HTMLEvents');
@@ -18,9 +18,13 @@ window.addEventListener('load', function() {
     wrapper[0].dispatchEvent(event);
 });
 
-window.addEventListener('focus', function() {
+$(window).focus(function() {
     console.log('focused');
     KanbanFocused();
+});
+
+$(window).resize(function() {
+    KanbanWindowResize();
 });
 
 var GmailKanban = GmailKanban || {
@@ -38,10 +42,15 @@ var KanbanInit = function() {
         board = new Board(savedBoard.cardLists, $('#board'));
     }
     GmailKanban.currentBoard = board;
+    KanbanWindowResize();
 };
 
 var KanbanFocused = function() {
     var addedCard = GmailKanban.store.getRecentlyAdded();
     if (!addedCard) return;
     GmailKanban.currentBoard.addCardFromGmail(addedCard);
+};
+
+var KanbanWindowResize = function() {
+    $('.card-list').css('max-height', $(window).height() - 90);
 };
