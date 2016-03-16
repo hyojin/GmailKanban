@@ -66,7 +66,8 @@ body {
 }
 
 .card-list .card-list-header .card-list-button-area {
-	width: 105px;
+	width: 100px;
+	margin-left: 5px;
 	float: left;
 }
 
@@ -79,6 +80,7 @@ body {
 .card-list-body {
 	overflow-y: auto;
 	flex: 1 1 auto;
+	min-height: 40px;
 }
 
 .card-list-body::-webkit-scrollbar { width: 0 !important }

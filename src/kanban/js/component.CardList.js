@@ -3,7 +3,8 @@ var Card = require('./component.Card');
 var CardAction = require('./action.CardAction');
 var CardListAction = require('./action.CardListAction');
 
-var CardList = function(title, cards) {
+var CardList = function(parent, title, cards) {
+    this.parent = parent;
     this.title = title;
     cards == null? cards = [] : cards = cards;
     this.init(cards);
@@ -18,6 +19,7 @@ CardList.prototype.init = function(cards) {
 
 CardList.prototype.render = function($parentDom) {
     var $html = $(this.html());
+    this.$dom = $html;
     this.$title = $html.find('.card-list-title-area');
     this.$cardListBody = $html.find('.card-list-body');
     console.log($html);
@@ -31,6 +33,12 @@ CardList.prototype.render = function($parentDom) {
 
 CardList.prototype.bindEvent = function($html) {
     var self = this;
+    $html.find('.card-list-edit').click(function() {
+        self.editTitle();
+    });
+    $html.find('.card-list-remove').click(function() {
+        self.remove();
+    });
     self.$title.blur(function() {
         self.$title.attr('contentEditable', false);
         CardListAction.action('editTitle', self);
@@ -63,15 +71,20 @@ CardList.prototype.editTitle = function(text) {
     self.$title.trigger('focus');
 };
 
+CardList.prototype.remove = function() {
+    CardListAction.action('removeCardList', this, this.parent);
+};
+
 CardList.prototype.html = function() {
     return '<div class="card-list-wrapper">' +
         '<div class="mui-panel card-list">' +
             '<div class="card-list-header">' +
-                '<div class="card-list-title-area">' +
+                '<div class="card-list-title-area noselect">' +
                     this.title +
                 '</div>' +
                 '<div class="card-list-button-area">' +
-                    '<button class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat">Add Card</button>' +
+                    '<button class="mui-btn mui-btn--small mui-btn--flat card-list-edit"><i class="fa fa-pencil"></i></button>' +
+                    '<button class="mui-btn mui-btn--small mui-btn--flat card-list-remove"><i class="fa fa-trash-o"></i></button>' +
                 '</div>' +
             '</div>' +
             '<div class="mui-divider"></div>' +

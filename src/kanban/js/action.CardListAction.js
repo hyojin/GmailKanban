@@ -12,6 +12,11 @@ var CardListAction = {
             cardList.title = cardList.$title.text();
             break;
 
+            case 'removeCardList':
+            cardList.$dom.remove();
+            board.removeCardList(cardList);
+            break;
+
             default:
         }
         GmailKanban.currentBoard.save();

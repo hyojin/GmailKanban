@@ -14,6 +14,7 @@ var CardAction = {
             case 'removeCard':
             card.$dom.remove();
             cardList.removeCardFromCards(card);
+            break;
 
             default:
         }

@@ -10,7 +10,7 @@ var Board = function (cardLists, $dom) {
 Board.prototype.init = function(cardLists) {
     this.cardLists = [];
     for (var i = 0; i < cardLists.length; i++) {
-        this.cardLists.push(new CardList(cardLists[i].title, cardLists[i].cards));
+        this.cardLists.push(new CardList(this, cardLists[i].title, cardLists[i].cards));
     }
     this.addCardListBtn = new AddCardListBtn(this);
     this.render();
@@ -30,6 +30,15 @@ Board.prototype.renderAddCardListBtn = function() {
 Board.prototype.addCardFromGmail = function(cardInfo) {
     if (!this.cardLists.length > 0) console.log('this.cardLists.length > 0');
     this.cardLists[0].addCard(cardInfo);
+};
+
+Board.prototype.removeCardList = function(cardList) {
+    for (var i = 0; i < this.cardLists.length; i++) {
+        if (cardList === this.cardLists[i]) {
+            this.cardLists.splice(i, 1);
+            break;
+        }
+    }
 };
 
 Board.prototype.save = function() {
