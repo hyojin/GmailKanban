@@ -1,3 +1,4 @@
+var $ = jQuery = require('jquery');
 var CardList = require('./component.CardList');
 var AddCardListBtn = require('./component.AddCardListBtn');
 
@@ -14,6 +15,7 @@ Board.prototype.init = function(cardLists) {
     }
     this.addCardListBtn = new AddCardListBtn(this);
     this.render();
+    this.cardSortable();
 };
 
 Board.prototype.render = function() {
@@ -41,8 +43,19 @@ Board.prototype.removeCardList = function(cardList) {
     }
 };
 
+Board.prototype.cardSortable = function() {
+    $('.sortable').sortable({
+        placeholder: 'sortable-placeholder kanban-card',
+        connectWith: '.connectSortable',
+        tolerance: 'pointer',
+        start: function(e, ui) {
+            ui.placeholder.css('height', ui.helper.height() + 20);
+        }
+    });
+};
+
 Board.prototype.save = function() {
-     GmailKanban.store.saveBoard(this.toJson());
+    GmailKanban.store.saveBoard(this.toJson());
 };
 
 Board.prototype.toJson = function() {

@@ -88,7 +88,7 @@ CardList.prototype.html = function() {
                 '</div>' +
             '</div>' +
             '<div class="mui-divider"></div>' +
-            '<div class="card-list-body sortable">' +
+            '<div class="card-list-body sortable connectSortable">' +
         '</div>' +
     '</div>';
 };

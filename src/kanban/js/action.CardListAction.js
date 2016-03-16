@@ -5,6 +5,7 @@ var CardListAction = {
             cardList.render(board.$dom);
             board.cardLists.push(cardList);
             board.renderAddCardListBtn();
+            board.cardSortable();
             cardList.editTitle();
             break;
             
