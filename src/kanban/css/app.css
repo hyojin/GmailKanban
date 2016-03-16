@@ -31,6 +31,10 @@ body {
 #board {
 	position: absolute;
 	height: 100%;
+	width: 100%;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 .card-list-wrapper {
@@ -39,7 +43,7 @@ body {
 	vertical-align: top;
 	margin-top: 10px;
 	margin-right: 15px;
-	
+	white-space: normal;
 }
 
 .card-list {

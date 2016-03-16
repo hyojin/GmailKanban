@@ -28,7 +28,7 @@ AddCardListBtn.prototype.bindEvent = function($html) {
 };
 
 AddCardListBtn.prototype.addCardList = function() {
-    var cardList = new CardList('');
+    var cardList = new CardList(this.parent, '');
     CardListAction.action('addCardList', cardList, this.parent);
 };
 
