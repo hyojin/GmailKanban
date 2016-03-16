@@ -2,6 +2,7 @@ var $ = jQuery = require('jquery');
 var Card = require('./component.Card');
 var CardAction = require('./action.CardAction');
 var CardListAction = require('./action.CardListAction');
+var ConsoleLog = require('./util.ConsoleLog');
 
 var CardList = function(parent, title, cards) {
     this.parent = parent;
@@ -22,7 +23,7 @@ CardList.prototype.render = function($parentDom) {
     this.$dom = $html;
     this.$title = $html.find('.card-list-title-area');
     this.$cardListBody = $html.find('.card-list-body');
-    console.log($html);
+    ConsoleLog.log($html);
     this.bindEvent($html);
     for (var i = 0; i < this.cards.length; i++) {
         this.cards[i].render(this.$cardListBody);
@@ -49,9 +50,9 @@ CardList.prototype.bindEvent = function($html) {
         }
     });
     this.$cardListBody.on('cardDropped', function(event, index, card) {
-        console.log(index);
-        console.log(card);
-        console.log('cardDropped');
+        ConsoleLog.log(index);
+        ConsoleLog.log(card);
+        ConsoleLog.log('cardDropped');
         CardAction.action('moveCard', card, self, index);
         return;
     });

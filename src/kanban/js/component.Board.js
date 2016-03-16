@@ -1,6 +1,7 @@
 var $ = jQuery = require('jquery');
 var CardList = require('./component.CardList');
 var AddCardListBtn = require('./component.AddCardListBtn');
+var ConsoleLog = require('./util.ConsoleLog');
 
 var Board = function (cardLists, $dom) {
     cardLists == null? cardLists = [{title: 'TODO', cards:[]}] : cardLists = cardLists;
@@ -30,7 +31,7 @@ Board.prototype.renderAddCardListBtn = function() {
 };
 
 Board.prototype.addCardFromGmail = function(cardInfo) {
-    if (!this.cardLists.length > 0) console.log('this.cardLists.length > 0');
+    if (!this.cardLists.length > 0) ConsoleLog.log('this.cardLists.length > 0');
     this.cardLists[0].addCard(cardInfo);
 };
 
@@ -52,8 +53,8 @@ Board.prototype.cardSortable = function() {
             ui.placeholder.css('height', ui.helper.height() + 20);
         },
         update: function(e, ui) {
-            console.log(e);
-            console.log(ui);
+            ConsoleLog.log(e);
+            ConsoleLog.log(ui);
             var index = ui.item.index();
             $(ui.item).trigger('cardMoved', [index]);
         }

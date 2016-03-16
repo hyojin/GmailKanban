@@ -5,12 +5,10 @@ var Board = require('./js/component.Board');
 var CardList = require('./js/component.CardList');
 var Card = require('./js/component.Card');
 var Store = require('./js/store.LocalStorage');
-
-console.log($);
-console.log(window);
+var ConsoleLog = require('./js/util.ConsoleLog');
 
 $(window).load(function() {
-    console.log('loaded');
+    ConsoleLog.log('loaded');
     KanbanInit();
     var event = document.createEvent('HTMLEvents');
     var wrapper = document.getElementsByClassName('wrapper');
@@ -19,7 +17,7 @@ $(window).load(function() {
 });
 
 $(window).focus(function() {
-    console.log('focused');
+    ConsoleLog.log('focused');
     KanbanFocused();
 });
 

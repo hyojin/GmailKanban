@@ -1,5 +1,6 @@
 var $ = jQuery = require('jquery');
 var CardAction = require('./action.CardAction');
+var ConsoleLog = require('./util.ConsoleLog');
 
 var Card = function(parent, card) {
     this.parent = parent;
@@ -44,9 +45,7 @@ Card.prototype.bindEvent = function($html) {
         }
     });
     $html.on('cardMoved', function(event, index) {
-        console.log('cardMoved');
-        console.log(self);
-        console.log($html.parent());
+        ConsoleLog.log('cardMoved');
         $html.parent().trigger('cardDropped', [index, self]);
     });
 };
@@ -57,7 +56,7 @@ Card.prototype.openGmailInNewTab = function(gmailLink) {
 };
 
 Card.prototype.remove = function() {
-    console.log('remove Called');
+    ConsoleLog.log('remove Called');
     CardAction.action('removeCard', this, this.parent);
 };
 
