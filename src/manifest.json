@@ -32,7 +32,6 @@
             "19": "icons/icon19.png",
             "38": "icons/icon38.png"
         },
-        "default_title": "Gmail Kanban",
-        "default_popup": "popup.html"
+        "default_title": "Gmail Kanban"
     }
 }
