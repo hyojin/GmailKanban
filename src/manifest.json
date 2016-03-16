@@ -15,9 +15,6 @@
         "unlimitedStorage",
         "https://mail.google.com/*"
     ],
-    "optional_permissions": [
-        "<all_urls>"
-    ],
     "background": {
         "scripts": [ "background.js" ]
     },
