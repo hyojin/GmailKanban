@@ -46,10 +46,10 @@ BgMessageController.prototype.listen = function(request, sender, sendResponse) {
     consoleLog(sender);
     if(request.cmd === 'addCardFromGmail') {
         consoleLog('cmd: addCardFromGmail');
-        consoleLog(sender.url);
+        consoleLog(sender.tab.url);
         var addedCardFromGmail = {
             gmailTitle: request.title,
-            gmailLink: sender.url
+            gmailLink: sender.tab.url
         };
         localStorage.setItem('addedCardFromGmail', JSON.stringify(addedCardFromGmail));
         if (AppInfo.kanbanStatus === false) {
