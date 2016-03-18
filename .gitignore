@@ -1,4 +1,7 @@
 node_modules
 .DS_Store
 bower_components
-bundle.js
+/src/kanban/bundle.js
+work/
+keys/
+dist/chrome.zip
