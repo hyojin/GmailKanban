@@ -1,11 +1,11 @@
 {
     "name": "gmailkanban",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "description": "A Simple Kanban browser extention for Gmail users.",
     "main": "",
     "scripts": {
         "start": "watchify -o src/kanban/bundle.js -v -d src/kanban/app.js",
-        "build": "",
+        "build": "gulp",
         "test": ""
     },
     "repository": {
@@ -23,7 +23,14 @@
         "crx": "^3.0.3",
         "debowerify": "^1.3.1",
         "gulp": "^3.9.1",
-        "watchify": "^3.7.0"
+        "watchify": "^3.7.0",
+        "vinyl-source-stream": "^1.1.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-streamify": "^1.0.2",
+        "gulp-uglify": "^1.5.3",
+        "del": "^2.2.0",
+        "gulp-crx-pack": "^1.0.1",
+        "gulp-vinyl-zip": "^1.2.2"
     },
     "browserify": {
         "transform": [
