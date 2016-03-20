@@ -58,8 +58,10 @@ BgMessageController.prototype.listen = function(request, sender, sendResponse) {
                 AppInfo.setKanbanTab(tab);
             });
         } else {
-            chrome.tabs.highlight({tabs: AppInfo.kanbanTab.index}, function(window) {
-                consoleLog(window);
+            chrome.tabs.get(AppInfo.kanbanTab.id, function(tab) {
+                chrome.tabs.highlight({tabs: tab.index, windowId:tab.windowId}, function(window) {
+                    consoleLog(window);
+                });
             });
         }
     }
