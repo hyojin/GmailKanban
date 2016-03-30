@@ -97,6 +97,7 @@ body {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	cursor: pointer;
+	min-height: 70px;
 }
 
 .kanban-card.active {

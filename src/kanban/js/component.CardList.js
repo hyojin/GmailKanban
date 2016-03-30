@@ -33,8 +33,11 @@ CardList.prototype.render = function($parentDom) {
 
 CardList.prototype.bindEvent = function($html) {
     var self = this;
-    $html.find('.card-list-edit').click(function() {
+    $html.find('.card-list-title-area').click(function() {
         self.editTitle();
+    });
+    $html.find('.card-list-add-card').click(function() {
+        self.addCardFromAddCardButton();
     });
     $html.find('.card-list-remove').click(function() {
         self.remove();
@@ -56,6 +59,15 @@ CardList.prototype.bindEvent = function($html) {
         CardAction.action('moveCard', card, self, index);
         return;
     });
+};
+
+CardList.prototype.addCardFromAddCardButton = function() {
+    var cardInfo = {
+        label: '',
+        gmailTitle: '',
+        gmailLink: ''
+    };
+    this.addCard(cardInfo);
 };
 
 CardList.prototype.addCard = function(cardInfo) {
@@ -90,7 +102,7 @@ CardList.prototype.html = function() {
                     this.title +
                 '</div>' +
                 '<div class="card-list-button-area">' +
-                    '<button class="mui-btn mui-btn--small mui-btn--flat card-list-edit"><i class="fa fa-pencil"></i></button>' +
+                    '<button class="mui-btn mui-btn--small mui-btn--flat card-list-add-card"><i class="fa fa-plus"></i></button>' +
                     '<button class="mui-btn mui-btn--small mui-btn--flat card-list-remove"><i class="fa fa-trash-o"></i></button>' +
                 '</div>' +
             '</div>' +

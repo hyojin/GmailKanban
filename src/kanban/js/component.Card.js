@@ -61,26 +61,45 @@ Card.prototype.remove = function() {
 };
 
 Card.prototype.html = function() {
-    return '<div class="kanban-card mui-panel">' +
-        '<div class="card-area">' +
-            '<div class="kanban-card-label noselect">' + this.label +'</div>' +
-            '<div class="kanban-card-gmail">' +
-                '<i class="fa fa-envelope"></i>' +
-                '<a href="#" class="gmailLink">' + this.gmailTitle +'</a>' +
+    if (this.gmailTitle !== '' && this.gmailLink !== '') {
+        return '<div class="kanban-card mui-panel">' +
+            '<div class="card-area">' +
+                '<div class="kanban-card-label noselect">' + this.label +'</div>' +
+                '<div class="kanban-card-gmail">' +
+                    '<i class="fa fa-envelope"></i>' +
+                    '<a href="#" class="gmailLink">' + this.gmailTitle +'</a>' +
+                '</div>' +
             '</div>' +
-        '</div>' +
-        '<div class="button-area">' +
-            '<div class="mui-dropdown">' +
-                '<button class="mui-btn card-dropdown-btn" data-mui-toggle="dropdown">' +
-                    '<span class="mui-caret"></span>' +
-                '</button>' +
-                '<ul class="mui-dropdown__menu mui-dropdown__menu--right">' +
-                    '<li><a class="card-edit" href="#"><i class="fa fa-pencil"></i></a></li>' +
-                    '<li><a class="card-remove" href="#"><i class="fa fa-trash-o"></i></a></li>' +
-                '</ul>' +
+            '<div class="button-area">' +
+                '<div class="mui-dropdown">' +
+                    '<button class="mui-btn card-dropdown-btn" data-mui-toggle="dropdown">' +
+                        '<span class="mui-caret"></span>' +
+                    '</button>' +
+                    '<ul class="mui-dropdown__menu mui-dropdown__menu--right">' +
+                        '<li><a class="card-edit" href="#"><i class="fa fa-pencil"></i></a></li>' +
+                        '<li><a class="card-remove" href="#"><i class="fa fa-trash-o"></i></a></li>' +
+                    '</ul>' +
+                '</div>' +
             '</div>' +
-        '</div>' +
-    '</div>';
+        '</div>';
+    } else {
+        return '<div class="kanban-card mui-panel">' +
+            '<div class="card-area">' +
+                '<div class="kanban-card-label noselect">' + this.label +'</div>' +
+            '</div>' +
+            '<div class="button-area">' +
+                '<div class="mui-dropdown">' +
+                    '<button class="mui-btn card-dropdown-btn" data-mui-toggle="dropdown">' +
+                        '<span class="mui-caret"></span>' +
+                    '</button>' +
+                    '<ul class="mui-dropdown__menu mui-dropdown__menu--right">' +
+                        '<li><a class="card-edit" href="#"><i class="fa fa-pencil"></i></a></li>' +
+                        '<li><a class="card-remove" href="#"><i class="fa fa-trash-o"></i></a></li>' +
+                    '</ul>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+    }
 };
 
 Card.prototype.toJson = function() {
