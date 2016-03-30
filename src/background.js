@@ -52,19 +52,10 @@ BgMessageController.prototype.listen = function(request, sender, sendResponse) {
             gmailLink: sender.tab.url
         };
         localStorage.setItem('addedCardFromGmail', JSON.stringify(addedCardFromGmail));
-        if (AppInfo.kanbanStatus === false) {
-            chrome.tabs.create({url: 'kanban.html'}, function(tab) {
-                consoleLog(tab);
-                AppInfo.setKanbanTab(tab);
-            });
-        } else {
-            chrome.tabs.get(AppInfo.kanbanTab.id, function(tab) {
-                chrome.tabs.highlight({tabs: tab.index, windowId:tab.windowId}, function(window) {
-                    consoleLog(window);
-                });
-            });
-        }
+    } else if (request.cmd === 'openBoard') {
+        consoleLog('cmd: openBoard');
     }
+    openKanbanBoard();
 };
 
 BgMessageController.prototype.send = function(message, cb) {
@@ -78,5 +69,20 @@ BgMessageController.prototype.send = function(message, cb) {
 };
 
 var bgMessageController = new BgMessageController();
+
+var openKanbanBoard = function() {
+    if (AppInfo.kanbanStatus === false) {
+        chrome.tabs.create({url: 'kanban.html'}, function(tab) {
+            consoleLog(tab);
+            AppInfo.setKanbanTab(tab);
+        });
+    } else {
+        chrome.tabs.get(AppInfo.kanbanTab.id, function(tab) {
+            chrome.tabs.highlight({tabs: tab.index, windowId:tab.windowId}, function(window) {
+                consoleLog(window);
+            });
+        });
+    }
+};
 
 chrome.runtime.onMessage.addListener(bgMessageController.listen);

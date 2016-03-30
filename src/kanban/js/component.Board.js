@@ -31,7 +31,7 @@ Board.prototype.renderAddCardListBtn = function() {
 };
 
 Board.prototype.addCardFromGmail = function(cardInfo) {
-    if (!this.cardLists.length > 0) ConsoleLog.log('this.cardLists.length > 0');
+    if (!this.cardLists.length > 0) ConsoleLog.log('this.cardLists.length <= 0');
     this.cardLists[0].addCard(cardInfo);
 };
 
