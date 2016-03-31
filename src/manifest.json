@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Gmail Kanban",
     "description": "Simple browser extension Kanban tool for Gmail users.",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "author": "Hyojin Kwak",
     "homepage_url": "https://github.com/hyojin/GmailKanban#readme",
     "icons": {
