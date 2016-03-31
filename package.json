@@ -6,7 +6,7 @@
     "scripts": {
         "start": "watchify -o src/kanban/bundle.js -v -d src/kanban/app.js",
         "build": "gulp",
-        "test": ""
+        "test": "node_modules/phantomjs-prebuilt/bin/phantomjs test/run.js"
     },
     "repository": {
         "type": "git",
@@ -30,7 +30,10 @@
         "gulp-uglify": "^1.5.3",
         "del": "^2.2.0",
         "gulp-crx-pack": "^1.0.1",
-        "gulp-vinyl-zip": "^1.2.2"
+        "gulp-vinyl-zip": "^1.2.2",
+        "phantomjs-prebuilt": "^2.1.7",
+        "mocha": "^2.4.5",
+        "chai": "^3.5.0"
     },
     "browserify": {
         "transform": [
