@@ -67,6 +67,7 @@ body {
 	font-size: 18px;
 	cursor: pointer;
 	word-wrap: break-word;
+	min-height: 25px;
 }
 
 .card-list .card-list-header .card-list-button-area {
