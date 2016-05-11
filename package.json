@@ -1,6 +1,6 @@
 {
     "name": "gmailkanban",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "A Simple Kanban browser extention for Gmail users.",
     "main": "",
     "scripts": {
