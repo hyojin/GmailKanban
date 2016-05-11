@@ -8,6 +8,13 @@ GmailHelper.prototype.isGmailOpen = function() {
     return false;
 };
 
+GmailHelper.prototype.isAddKanbanButtonExist = function() {
+    if (document.getElementById('AddKanbanButton') != undefined) {
+        return true;
+    }
+    return false;
+};
+
 GmailHelper.prototype.addKanbanButton = function() {
     var buttonElement = this.getButtonElement();
     buttonElement.addEventListener("click", this.addGmailToKanban);
@@ -23,6 +30,7 @@ GmailHelper.prototype.getButtonElement = function() {
     button.classList.add('T-I-Js-Gs');
     button.classList.add('ar7');
     button.classList.add('T-I-Zf-aw2');
+    button.setAttribute('id', 'AddKanbanButton');
     button.setAttribute('role', 'button');
     button.setAttribute('tabindex', '0');
     button.setAttribute('data-tooltip', 'Add to Kanban');
@@ -62,7 +70,7 @@ var CMessageController = function() {};
 
 CMessageController.prototype.listen = function(request, sender, sendResponse) {
     if(request.cmd === 'initialize') {
-        if (gmailHelper.isGmailOpen()) {
+        if (gmailHelper.isGmailOpen() && !gmailHelper.isAddKanbanButtonExist()) {
             gmailHelper.addKanbanButton();
         }
     }
