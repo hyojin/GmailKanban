@@ -26,7 +26,7 @@ describe('cardlist', function() {
             assert.equal(2, GmailKanban.currentBoard.cardLists.length);
         });
         it('should editmode', function () {
-            assert.equal('true', 
+            assert.equal('true',
             jQuery(jQuery('.card-list')[1]).find('.card-list-title-area').prop('contenteditable'));
         });
         it('should have no card', function () {
@@ -37,12 +37,12 @@ describe('cardlist', function() {
     describe('edit title', function () {
         it('should change to edit mode when title of cardlist is clicked', function () {
             jQuery(jQuery('.card-list')[0]).find('.card-list-title-area').click();
-            assert.equal('true', 
+            assert.equal('true',
             jQuery(jQuery('.card-list')[0]).find('.card-list-title-area').prop('contenteditable'));
         });
         it('should change to view mode when it is blurred', function () {
             jQuery(jQuery('.card-list')[0]).find('.card-list-title-area').blur();
-            assert.equal('false', 
+            assert.equal('false',
             jQuery(jQuery('.card-list')[0]).find('.card-list-title-area').prop('contenteditable'));
         });
     });
@@ -55,6 +55,10 @@ describe('cardlist', function() {
     });
     describe('remove cardlist', function () {
         it('should remove cardlist when trash button is clicked', function () {
+            // dummy function
+            window.confirm = function() {
+                return true;
+            };
             jQuery(jQuery('.card-list')[1]).find('.card-list-remove').click();
             assert.equal(1, jQuery('.card-list').length);
             assert.equal(1, GmailKanban.currentBoard.cardLists.length);
@@ -71,7 +75,7 @@ describe('card', function() {
             jQuery(jQuery('.card-list')[1]).find('.card-list-add-card').click();
         });
         it('should editmode', function () {
-            assert.equal('true', 
+            assert.equal('true',
             jQuery(jQuery('.card-list')[1]).find('.kanban-card-label').prop('contenteditable'));
         });
         it('should have no gmail link', function () {
@@ -81,12 +85,12 @@ describe('card', function() {
     describe('edit label', function () {
         it('should change to edit mode when edit card label button is clicked', function () {
             jQuery(jQuery('.card-list')[1]).find('.card-edit').click();
-            assert.equal('true', 
+            assert.equal('true',
             jQuery(jQuery('.card-list')[1]).find('.kanban-card-label').prop('contenteditable'));
         });
         it('should change to view mode when it is blurred', function () {
             jQuery(jQuery('.card-list')[1]).find('.kanban-card-label').blur();
-            assert.equal('false', 
+            assert.equal('false',
             jQuery(jQuery('.card-list')[1]).find('.kanban-card-label').prop('contenteditable'));
         });
     });
