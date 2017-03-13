@@ -40,8 +40,9 @@ CardList.prototype.bindEvent = function($html) {
         self.addCardFromAddCardButton();
     });
     $html.find('.card-list-remove').click(function() {
-        if( confirm('Remove this list (including cards) ?') )
-          self.remove();
+        if(confirm('Remove this list (including cards) ?')) {
+            self.remove();
+        }
     });
     self.$title.blur(function() {
         self.$title.attr('contentEditable', false);
